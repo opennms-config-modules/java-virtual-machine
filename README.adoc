@@ -1,0 +1,66 @@
+= Java Virtual Machine
+
+OpenNMS configuration to monitor performance metrics from the Java Virtual Machines using Java Management Extensions (JMX).
+This configuration is tested with:
+
+* CentOS 7 with OpenJDK Runtime Environment (1.8.0_171-b10)
+* Grafana 5.2.1 with OpenNMS Helm 2.0.0
+
+== Installation
+
+.Download and install from GitHub
+[source, bash]
+----
+mkdir ${HOME}/opennms-config-workspace
+cd ${HOME}/opennms-config-workspace
+git clone https://github.com/opennms-config-modules/java-virtual-machine.git
+----
+
+=== Data Collection
+
+This instruction describes how to install the configuration files and defines a service used for the JMX data collection.
+In this example the data collection is added in the default collection package with a collection interval of 5 minutes (300000ms in service interval, and 300s in RRD step size).
+
+If you want a more granular data collection adjust the polling interval and the RRD step size accordingly.
+
+NOTE: You have to configure your Java application to use allow remote JMX connection.
+      This example uses the port 18980 as an working example from the OpenNMS Java application.
+      Adjust the port accordingly to the exposed JMX port from your Java application.
+
+.Install datacollection configuration
+[source, bash]
+----
+cp ${HOME}/opennms-config-workspace/juniper/datacollection/*.xml ${OPENNMS_HOME}/etc/jmx-datacollection-config.d
+----
+
+.Create a service in ${OPENNMS_HOME}/etc/collectd-configuration.xml
+[source, xml]
+----
+<service name="JMX-Java8-JVM" interval="300000" user-defined="false" status="on">
+    <parameter key="port" value="18980"/>
+    <parameter key="retry" value="2"/>
+    <parameter key="timeout" value="3000"/>
+    <parameter key="rrd-base-name" value="java8-jvm"/>
+    <parameter key="collection" value="java8-jvm"/>
+    <parameter key="thresholding-enabled" value="true"/>
+    <parameter key="ds-name" value="java8-jvm"/>
+    <parameter key="friendly-name" value="java8-jvm"/>
+</service>
+----
+
+=== Graph Report Definitions
+
+.Install graph report definitions
+[source, bash]
+----
+cp ${HOME}/opennms-config-workspace/juniper/graphs/*.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d
+----
+
+=== Grafana Dashboards
+
+With this metrics two Grafana Dashboards can be used:
+
+* [Java 8 CPU Dashboard](https://grafana.com/dashboards/4033)
+* [Java 8 Memory Dashboard](https://grafana.com/dashboards/4036)
+
+The dashboard JSON files published on Grafana are maintained in this repository in the `grafana` folder.
