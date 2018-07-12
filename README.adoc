@@ -30,7 +30,7 @@ NOTE: You have to configure your Java application to use allow remote JMX connec
 .Step 1: Install datacollection configuration
 [source, bash]
 ----
-cp ${HOME}/opennms-config-workspace/juniper/datacollection/*.xml ${OPENNMS_HOME}/etc/jmx-datacollection-config.d
+cp ${HOME}/opennms-config-workspace/java-virtual-machine/datacollection/*.xml ${OPENNMS_HOME}/etc/jmx-datacollection-config.d
 ----
 
 .Create a service in ${OPENNMS_HOME}/etc/collectd-configuration.xml
@@ -57,7 +57,7 @@ cp ${HOME}/opennms-config-workspace/juniper/datacollection/*.xml ${OPENNMS_HOME}
 .Install graph report definitions
 [source, bash]
 ----
-cp ${HOME}/opennms-config-workspace/juniper/graphs/*.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d
+cp ${HOME}/opennms-config-workspace/java-virtual-machine/graphs/*.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d
 ----
 
 === Grafana Dashboards
