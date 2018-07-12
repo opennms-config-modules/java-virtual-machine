@@ -27,7 +27,7 @@ NOTE: You have to configure your Java application to use allow remote JMX connec
       This example uses the port 18980 as an working example from the OpenNMS Java application.
       Adjust the port accordingly to the exposed JMX port from your Java application.
 
-.Install datacollection configuration
+.Step 1: Install datacollection configuration
 [source, bash]
 ----
 cp ${HOME}/opennms-config-workspace/juniper/datacollection/*.xml ${OPENNMS_HOME}/etc/jmx-datacollection-config.d
@@ -47,6 +47,10 @@ cp ${HOME}/opennms-config-workspace/juniper/datacollection/*.xml ${OPENNMS_HOME}
     <parameter key="friendly-name" value="java8-jvm"/>
 </service>
 ----
+
+.Step 2: Assign a JMX-Java8-JVM service on nodes IP interface providing JMX access
+* You can use a JMX detector
+* Assign the service manually with Provisioning
 
 === Graph Report Definitions
 
