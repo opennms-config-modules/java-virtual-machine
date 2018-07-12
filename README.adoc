@@ -60,7 +60,7 @@ cp ${HOME}/opennms-config-workspace/juniper/graphs/*.properties ${OPENNMS_HOME}/
 
 With this metrics two Grafana Dashboards can be used:
 
-* [Java 8 CPU Dashboard](https://grafana.com/dashboards/4033)
-* [Java 8 Memory Dashboard](https://grafana.com/dashboards/4036)
+* link:https://grafana.com/dashboards/4033[Java 8 CPU Dashboard]
+* link:https://grafana.com/dashboards/4036[Java 8 Memory Dashboard]
 
 The dashboard JSON files published on Grafana are maintained in this repository in the `grafana` folder.
