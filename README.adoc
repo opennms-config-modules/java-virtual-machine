@@ -3,8 +3,8 @@
 OpenNMS configuration to monitor performance metrics from the Java Virtual Machines using Java Management Extensions (JMX).
 This configuration is tested with:
 
-* CentOS 7 with OpenJDK Runtime Environment (1.8.0_171-b10)
-* Grafana 5.2.1 with OpenNMS Helm 2.0.0
+* CentOS 7 with OpenJDK Runtime Environment (1.8.0_181-b13)
+* Grafana 5.3.1 with OpenNMS Helm 2.0.0
 
 == Installation
 
