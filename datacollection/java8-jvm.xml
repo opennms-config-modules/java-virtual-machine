@@ -37,6 +37,9 @@
                 <attrib name="TotalPhysicalMemorySize" alias="TotPhysicalMemSize" type="gauge"/>
                 <attrib name="TotalSwapSpaceSize" alias="TotalSwapSpaceSize" type="gauge"/>
             </mbean>
+            <mbean name="java8-jvm:Runtime" objectname="java.lang:type=Runtime">
+                <attrib name="Uptime" alias="JvmUptime" type="gauge"/>
+            </mbean>
             <mbean name="java8-jvm:Threading" objectname="java.lang:type=Threading">
                 <attrib name="CurrentThreadCpuTime" alias="CurThreadCpuTime" type="gauge"/>
                 <attrib name="CurrentThreadUserTime" alias="CurThreadUserTime" type="gauge"/>
